@@ -1,0 +1,56 @@
+:root{
+	--bg: #0b0c0c;
+	--card: hwb(0 95% 3%);
+	--accent: #0b63ff;
+	--muted: #556074;
+	--radius: 14px;
+	--max-width: 1100px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+	margin:0;
+	font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	background: linear-gradient(180deg,#282829,#1d1c1c);
+	color:#071024;
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+}
+
+.container{max-width:var(--max-width);margin:0 auto;padding:1.25rem}
+
+.hero{
+	display:flex;align-items:center;justify-content:center;text-align:center;
+	padding:5.5rem 1rem;background:linear-gradient(135deg, rgba(11,99,255,0.10), rgba(11,99,255,0.03));
+}
+.name{font-size:clamp(2rem,6vw,3.5rem);margin:0;font-weight:700;letter-spacing:-0.02em}
+.subtitle{margin:.6rem 0 1.25rem;color:var(--muted);font-size:1.05rem}
+
+.cta .btn{display:inline-block;padding:.7rem 1.15rem;border-radius:999px;background:var(--accent);color:#fff;text-decoration:none;margin:0 .35rem;font-weight:600;box-shadow:0 10px 30px rgba(11,99,255,0.12)}
+.btn.ghost{background:transparent;color:var(--accent);border:1px solid rgba(11,99,255,0.12);box-shadow:none}
+
+.card{background:var(--card);padding:1.25rem;border-radius:var(--radius);box-shadow:0 10px 30px rgba(7,16,36,0.06);margin:1.25rem 0}
+.card h2{margin:.25rem 0 0.5rem;font-size:1.25rem}
+.card p{color:#334155;margin:0 0 .5rem}
+
+.skills{list-style:none;padding:0;margin:.5rem 0 0;display:flex;gap:.5rem;flex-wrap:wrap}
+.skills li{background:#f1f5f9;padding:.45rem .7rem;border-radius:999px;color:var(--muted);font-weight:600;font-size:.95rem}
+
+a{color:var(--accent);text-decoration:none}
+
+.footer{text-align:center;padding:1rem 0;color:var(--muted);font-size:.95rem}
+
+@media(min-width:800px){
+	.container{padding:2rem}
+	.hero{padding:8rem 2rem}
+	main{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+	.card{margin:0}
+}
+
+@media(max-width:479px){
+	.hero{padding:3.5rem 1rem}
+	.cta .btn{display:block;margin:.5rem auto}
+	main{padding:0 1rem}
+}
+
