@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calvin Bett | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --accent: #00ff88; 
+            --bg-dark: #050505;
+            --card-bg: #111111;
+            --text-bright: #ffffff;
+            --text-muted: #a0a0a0;
+            --glass: rgba(255, 255, 255, 0.03);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; transition: all 0.3s ease; }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-bright);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Nav Bar */
+        nav {
+            position: fixed;
+            top: 0; width: 100%; height: 70px;
+            background: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--glass);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-container {
+            max-width: 1100px; margin: 0 auto; width: 100%; padding: 0 20px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .nav-links button {
+            background: none; border: none; color: var(--text-muted);
+            font-family: 'Space Grotesk'; font-size: 1rem; cursor: pointer;
+            margin-left: 30px; padding: 5px 0;
+        }
+
+        .nav-links button.active { color: var(--accent); border-bottom: 2px solid var(--accent); }
+
+        /* Page Transitions */
+        .page-content {
+            max-width: 1100px; margin: 0 auto; padding: 120px 20px 60px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Components */
+        .hero-title { font-family: 'Space Grotesk'; font-size: clamp(3rem, 10vw, 6rem); line-height: 1; margin-bottom: 20px; }
+        .highlight { color: var(--accent); text-shadow: 0 0 20px rgba(0, 255, 136, 0.3); }
+        
+        .card {
+            background: var(--card-bg); border: 1px solid var(--glass);
+            padding: 40px; border-radius: 20px; margin-bottom: 30px;
+        }
+
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        
+        .skill-tag {
+            background: var(--glass); border: 1px solid rgba(255,255,255,0.1);
+            padding: 10px 20px; border-radius: 8px; font-size: 0.9rem;
+            display: inline-block; margin: 5px;
+        }
+
+        .social-btn {
+            display: flex; align-items: center; gap: 15px;
+            padding: 20px; background: var(--glass); border-radius: 15px;
+            text-decoration: none; color: white; border: 1px solid transparent;
+        }
+        .social-btn:hover { border-color: var(--accent); background: rgba(0, 255, 136, 0.05); }
+
+        footer { text-align: center; padding: 40px; opacity: 0.5; font-size: 0.8rem; }
+
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <div style="font-weight: 700; color: var(--accent); font-family: 'Space Grotesk'; font-size: 1.5rem;">CB.</div>
+            <div class="nav-links">
+                <button onclick="router('home')" id="btn-home" class="active">HOME</button>
+                <button onclick="router('about')" id="btn-about">ABOUT</button>
+                <button onclick="router('contact')" id="btn-contact">CONTACT</button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="view" class="page-content">
+        </div>
+
+    <footer>
+        © 2026 CALVIN BETT | ELDOHUB FULLSTACK STUDENT
+    </footer>
+
+    <script>
+        const PAGES = {
+            home: `
+                <div class="hero-section">
+                    <p style="color: var(--accent); letter-spacing: 5px; margin-bottom: 10px;">HELLO, I AM</p>
+                    <h1 class="hero-title">Calvin <span class="highlight">Bett</span></h1>
+                    <p style="font-size: 1.5rem; color: var(--text-muted); max-width: 700px;">
+                        A Software Engineering student at <span style="color: white; font-weight: 600;">Eldohub</span>, currently mastering the art of Fullstack Development.
+                    </p>
+                    <div style="margin-top: 40px;">
+                        <button onclick="router('about')" style="padding: 15px 40px; background: var(--accent); color: black; border: none; border-radius: 50px; font-weight: 700; cursor: pointer;">VIEW JOURNEY</button>
+                    </div>
+                </div>
+            `,
+            about: `
+                <h2 style="font-size: 3rem; margin-bottom: 40px; font-family: 'Space Grotesk';">The <span class="highlight">Fullstack</span> Journey</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3 style="color: var(--accent); margin-bottom: 15px;">Education @ Eldohub</h3>
+                        <p style="color: var(--text-muted);">
+                            I am currently enrolled in the intensive <strong>Fullstack Software Engineering Development</strong> at Eldohub in Eldoret. This program is a deep-dive into modern software engineering, focusing on the <strong>HTML5 AND CSS3</strong>.
+                        </p>
+                        <p style="margin-top: 15px; color: var(--text-muted);">
+                            My daily curriculum involves building high-performance Applications, managing Website databases, and creating reactive frontends that provide elite user experiences.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3 style="color: var(--accent); margin-bottom: 15px;">Technical Arsenal</h3>
+                        <div id="skills-cloud">
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3</span>
+                            <span class="skill-tag">Git/GitHub</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="margin-top: 30px;">
+                    <h3 style="margin-bottom: 20px;">What I'm Doing Right Now</h3>
+                    <p style="color: var(--text-muted);">
+                        As a student, I am currently architecting a series of production-level applications. This includes learning <strong>System Design</strong>, understanding how to optimize database queries for speed, and exploring <strong>HTML5 AND CSS3</strong> for server-side rendering. My goal is to become one of Eldoret's leading software engineers, bridging the gap between local challenges and global technological standards.
+                    </p>
+                </div>
+            `,
+            contact: `
+                <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+                    <h2 style="font-size: 3rem; margin-bottom: 20px; font-family: 'Space Grotesk';">Let's <span class="highlight">Collaborate</span></h2>
+                    <p style="color: var(--text-muted); margin-bottom: 50px;">I am always open to discussing new projects, creative ideas, or opportunities to be part of your visions.</p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+                        <a href="https://www.instagram.com/its._.bett.er/?__pwa=1" class="social-btn" target="_blank">
+                            <i class="fa-brands fa-instagram" style="font-size: 1.5rem; color: #E1306C;"></i>
+                            <div style="text-align: left;">
+                                <div style="font-weight: 700;">Instagram</div>
+                                <div style="font-size: 0.8rem; color: var(--text-muted);">@Calvin Bett</div>
+                            </div>
+                        </a>
+                        <a href="https://tiktok.com/@its._.b3tt.er" class="social-btn" target="_blank">
+                            <i class="fa-brands fa-tiktok" style="font-size: 1.5rem;"></i>
+                            <div style="text-align: left;">
+                                <div style="font-weight: 700;">TikTok</div>
+                                <div style="font-size: 0.8rem; color: var(--text-muted);">Follow for content</div>
+                            </div>
+                        </a>
+                        <a href="mailto:calvinbett@outlook.com" class="social-btn">
+                            <i class="fa-solid fa-envelope" style="font-size: 1.5rem; color: var(--accent);"></i>
+                            <div style="text-align: left;">
+                                <div style="font-weight: 700;">Email Me</div>
+                                <div style="font-size: 0.8rem; color: var(--text-muted);">Direct professional inquiry</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            `
+        };
+
+        function router(pageId) {
+            // Update Content
+            const view = document.getElementById('view');
+            view.innerHTML = PAGES[pageId];
+
+            // Update Nav Buttons
+            document.querySelectorAll('.nav-links button').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + pageId).classList.add('active');
+
+            // Scroll to top
+            window.scrollTo(0,0);
+        }
+
+        // Initialize Home Page
+        router('home');
+    </script>
+</body>
+</html>
